@@ -1,0 +1,23 @@
+{% extends "webapp/layout.html" %}
+
+{% block body %}
+    <a href="{% url 'mainpage' %} ">Home</a>
+
+    <h1>Staffs</h1>
+
+    <ul>
+        {% for staff in staffs %}
+
+            <li>
+                
+                <a href="{% url 'staffdetails' staff.pk %} ">
+                    Staff {{ staff.StaffID }}: {{ staff.first_name }} {{ staff.last_name }}
+                </a>
+                                        
+            </li>
+
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'createstaff' %} ">Create New Staff</a>
+{% endblock %}

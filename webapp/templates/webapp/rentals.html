@@ -1,0 +1,22 @@
+{% extends "webapp/layout.html" %}
+
+{% block body %}
+
+    <a href="{% url 'mainpage' %} ">Home</a>
+
+    <h1>Rentals</h1>
+
+    <ul>
+        {% for rental in rentals %}
+
+            <li>
+                <a href="{% url 'rentaldetails' rental.pk %} ">
+                Rental {{ rental.RentalNO }}
+                </a>
+            </li>
+
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'createrental' %} ">Create New Rental</a>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "webapp/layout.html" %}
+
+{% block body %}
+
+    <h1>Welcome</h1>
+
+    <a class="btn btn-lg btn-success" role="button" style="position: relative;" href="{% url 'cars' %}">Cars</a>
+    <a class="btn btn-lg btn-success" role="button" style="position: relative;" href="{% url 'staffs' %}">Staffs</a>
+    <a class="btn btn-lg btn-success" role="button" style="position: relative;" href="{% url 'customers' %}">customers</a>
+    <a class="btn btn-lg btn-success" role="button" style="position: relative;" href="{% url 'rentals' %}">Rentals</a>
+
+
+
+{% endblock %}

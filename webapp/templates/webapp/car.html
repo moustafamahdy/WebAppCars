@@ -1,0 +1,30 @@
+{% extends "webapp/layout.html" %}
+{% load rest_framework %}
+
+{% block body %}
+
+    <a href="{% url 'mainpage' %} ">Home</a>
+    <a href="{% url 'cars' %}">Cars</a>
+
+    <h1>Car {{ car.CarNo }}</h1>
+
+    <ul>
+        <li>Car NO.: {{ car.CarNo }} </li>
+        <li>Car Name: {{ car.CarName }} </li>
+        <li>Car Model: {{ car.CarModel }} </li>
+        <li>Staff: {{ car.staff }} </li>
+    </ul>
+
+    <form action="{% url 'cardetails' car.pk %}" method="POST" class="form-group" style="width: 500px; ">
+
+        {% csrf_token %}
+        {% render_form serializer %}
+
+        <p>
+            <input type="submit" value="Save" class="btn btn-lg btn-success">
+            <a class="btn btn-lg btn-success" href="{% url 'cardelete' car.pk %}" role="button" style="position: relative;">Delete</a>
+        </p>
+
+    </form>
+
+{% endblock %}

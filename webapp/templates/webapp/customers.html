@@ -1,0 +1,22 @@
+{% extends "webapp/layout.html" %}
+
+{% block body %}
+
+    <a href="{% url 'mainpage' %} ">Home</a>
+
+    <h1>Customers</h1>
+
+    <ul>
+        {% for customer in customers %}
+
+            <li>
+                <a href="{% url 'customerdetails' customer.pk %} ">
+                    Customer {{ customer.CustomerID }}: {{ customer.FirstName }} {{ customer.LastName }}
+                </a>
+            </li>
+
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'createcustomer' %} ">Create New Customer</a>
+{% endblock %}

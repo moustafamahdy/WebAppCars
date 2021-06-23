@@ -1,0 +1,24 @@
+{% extends "webapp/layout.html" %}
+
+{% block body %}
+    <a href="{% url 'mainpage' %} ">Home</a>
+
+    <h1>Cars</h1>
+
+    <ul>
+        {% for car in cars %}
+
+            <li>
+                
+                <a href="{% url 'cardetails' car.pk %}"> 
+                    Car {{ car.CarNo }}: {{car.CarName}}
+                </a>
+
+            </li>
+
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'createcar' %}">Create New Car</a>
+
+{% endblock %}

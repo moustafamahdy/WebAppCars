@@ -1,0 +1,34 @@
+{% extends "webapp/layout.html" %}
+{% load rest_framework %}
+
+{% block body %}
+    
+    <p>
+        <a href="{% url 'mainpage' %} ">Home</a>
+        <a href="{% url 'staffs' %}">Staffs</a>
+
+    </p>    
+
+    <h1>Staff {{ staff.StaffID }}</h1>
+
+    <ul>
+        <li>Staff ID: {{ staff.StaffID }} </li>
+        <li>Staff Name: {{ staff.first_name }} {{ staff.last_name }} </li>
+        <li>Phone NO.: {{ staff.PhoneNo }} </li>
+        
+    </ul>
+
+    <form action="{% url 'staffdetails' staff.pk %}" method="POST" class="form-group" style="width: 500px; ">
+
+        {% csrf_token %}
+        {% render_form serializer %}
+
+        <p>
+            <input type="submit" value="Save" class="btn btn-lg btn-success">
+            <a class="btn btn-lg btn-success" href="{% url 'staffdelete' staff.pk %}" role="button" style="position: relative;">Delete</a>
+            
+        </p>
+
+    </form>
+
+{% endblock %}

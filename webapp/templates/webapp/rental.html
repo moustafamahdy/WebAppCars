@@ -1,0 +1,37 @@
+{% extends "webapp/layout.html" %}
+{% load rest_framework %}
+
+{% block body %}
+    
+    <p>
+        <a href="{% url 'mainpage' %} ">Home</a>
+        <a href="{% url 'rentals' %}">Rentals</a>
+
+    </p>    
+
+    <h1>Rental {{ rental.RentalNO }}</h1>
+
+    <ul>
+        <li>Rental No: {{ rental.RentalNO }} </li>
+        <li>Car No.: {{ rental.CarNo }}  </li>
+        <li>Staff ID: {{ rental.StaffID }} </li>
+        <li>Customer ID: {{ rental.CustomerId }}</li>
+        <li>Time Out: {{ rental.Timeout }} </li>
+        <li>Time Return: {{ rental.TimeReturn }} </li>
+        
+    </ul>
+
+    <form action="{% url 'rentaldetails' rental.pk %}" method="POST" class="form-group" style="width: 500px; ">
+
+        {% csrf_token %}
+        {% render_form serializer %}
+
+        <p>
+            <input type="submit" value="Save" class="btn btn-lg btn-success">
+            <a class="btn btn-lg btn-success" href="{% url 'rentaldelete' rental.pk %}" role="button" style="position: relative;">Delete</a>
+            
+        </p>
+
+    </form>
+
+{% endblock %}
